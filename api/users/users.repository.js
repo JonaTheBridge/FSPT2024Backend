@@ -8,6 +8,11 @@ export async function getAll() {
   return users;
 }
 
+export async function getByUsername({ username, }) {
+  const user = await userModel.findOne({ deleted: false, username, }).lean();
+  return user;
+}
+
 export async function getLength() {
   const usersLength = await userModel
     .count({ deleted: false, })

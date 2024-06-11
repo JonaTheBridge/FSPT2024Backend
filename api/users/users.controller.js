@@ -1,61 +1,60 @@
 import * as userService from './users.service.js';
 
-export function getAll(req, res) {
-  const users = userService.getAll();
+export async function getAll(req, res) {
+  const users = await userService.getAll();
   res.json(users);
 }
 
-export function getLength(req, res) {
-  const length = userService.getLength();
+export async function getLength(req, res) {
+  const length = await userService.getLength();
   res.json(length);
 }
 
-export function getRandom(req, res) {
-  const randomUser = userService.getRandom();
+export async function getRandom(req, res) {
+  const randomUser = await userService.getRandom();
   res.json(randomUser);
 }
 
-export function getById(req, res) {
-  const { id } = req.params;
-  // const userById = userService.getById({ id });
-  const userById = userService.getById({ id });
+export async function getById(req, res) {
+  const { id, } = req.params;
+  const userById = await userService.getById({ id, });
   res.json(userById);
 }
 
-export function getByFilter(req, res) {
+export async function getByFilter(req, res) {
   const filter = req.query;
-  const filteredUsers = userService.getByFilter({ filter });
+  const filteredUsers = await userService.getByFilter({ filter, });
   res.json(filteredUsers);
 }
 
-export function create(req, res) {
+export async function create(req, res) {
   const user = req.body;
-  const createdUser = userService.create({ user });
+  const createdUser = await userService.create({ user });
   res.json(createdUser);
 }
 
-export function replace(req, res) {
+export async function replace(req, res) {
   const { id } = req.params;
   const newUser = req.body;
-  const replacedUser = userService.replace({ id, newUser });
+  const replacedUser = await userService.replace({ id, newUser });
   res.json(replacedUser);
 }
 
-export function update(req, res) {
+export async function update(req, res) {
   const { id } = req.params;
   const newProps = req.body;
-  const updatedUser = userService.update({ id, newProps });
+  const updatedUser = await userService.update({ id, newProps });
   res.json(updatedUser);
 }
 
-export function markAsDelete(req, res) {
+export async function markAsDelete(req, res) {
   const { id } = req.params;
-  const nonDeletedUsers = userService.markAsDelete({ id });
+  const nonDeletedUsers = await userService.markAsDelete({ id });
   res.json(nonDeletedUsers);
 }
 
-export function remove(req, res) {
+export async function remove(req, res) {
   const { id } = req.params;
-  const nonDeletedUsers = userService.remove({ id });
+  const nonDeletedUsers = await userService.remove({ id });
   res.json(nonDeletedUsers);
 }
