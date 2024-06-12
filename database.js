@@ -1,7 +1,13 @@
 import mongoose from 'mongoose';
+import * as dotenv from 'dotenv';
 
-const MONGO_URL = 'mongodb+srv://admin:admin@cluster0.mpwutye.mongodb.net/';
-const MONGO_DB_NAME = 'FSPT2024';
+dotenv.config();
+
+// eslint-disable-next-line no-undef
+const { MONGO_URL, MONGO_DB_NAME, } = process.env;
+
+// const MONGO_URL = 'mongodb+srv://admin:admin@cluster0.mpwutye.mongodb.net/';
+// const MONGO_DB_NAME = 'FSPT2024';
 
 try {
   await mongoose.connect(MONGO_URL, { dbName: MONGO_DB_NAME, autoIndex: true, });

@@ -49,3 +49,7 @@ export function markAsDelete({ id }) {
 export function remove({ id }) {
   return usersRepo.remove({ id });
 }
+
+export async function getByUsername({ username, }) {
+  return usersRepo.getByUsername({ username, });
+}

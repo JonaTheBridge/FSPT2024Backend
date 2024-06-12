@@ -4,8 +4,10 @@ import jwt from 'jsonwebtoken';
 
 function getToken({ username, }) {
   const payload = { username, };
-  const token = jwt.sign(payload, 'secret', {
-    expiresIn: 60 * 60 * 24, // in secs
+  // eslint-disable-next-line no-undef
+  const { AUTH_SECRET_KEY, AUTH_EXPIRES_IN, } = process.env;
+  const token = jwt.sign(payload, AUTH_SECRET_KEY, {
+    expiresIn: AUTH_EXPIRES_IN, // in secs
   });
 
   return token;
