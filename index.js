@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 
 import './database.js';
-import apiRouter from './src/api/router.js';
 import authMiddleware from './src/middlewares/auth.middleware.js';
+import apiRouter from './src/api/router.js';
 
 const server = express();
 
